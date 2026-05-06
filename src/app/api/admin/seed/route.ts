@@ -3,7 +3,7 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { defaultCategories, defaultProducts } from "../../../store";
 
 const defaultAccounts = [
-  { email: "bienvenuesweethome@gmail.com", username: "BienvenueSweetHome", password: "Bi!En123", role: "admin" as const },
+  { email: "mbala.itsaka@gmail.com", username: "MbalaItsaka", password: "Mba!Itsa123", role: "admin" as const },
   { email: "bshworker6@gmail.com", username: "BSHWorker", password: "BSH!@worker123", role: "worker" as const },
 ];
 

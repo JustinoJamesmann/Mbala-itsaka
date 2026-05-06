@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "⚡ SWEET — Stock & Sales Management",
-  description: "Gen Z 2026 Stock & Sales Management Dashboard",
+  title: "Mbala&Itsaka — Stock & Sales Management",
+  description: "Mbala&Itsaka Stock & Sales Management Dashboard",
 };
 
 export default function RootLayout({

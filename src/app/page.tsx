@@ -6,6 +6,8 @@ import Dashboard from "./components/Dashboard";
 import Inventory from "./components/Inventory";
 import Sales from "./components/Sales";
 import Report from "./components/Report";
+import Categories from "./components/Categories";
+import Stock from "./components/Stock";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -119,10 +121,11 @@ export default function Home() {
 
   if (!loaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#0e1619' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#0d1518' }}>
         <div className="text-center">
-          <div className="text-4xl font-bold gradient-text mb-2">⚡ BIENVENUE SWEET HOME</div>
-          <div className="text-sm text-white/40 animate-pulse-neon">Loading...</div>
+          <img src="/logo.png" alt="Mbala&Itsaka" className="h-40 w-auto mx-auto mb-4 object-contain" />
+          <div className="text-3xl font-bold gradient-text mb-2">Mbala&amp;Itsaka</div>
+          <div className="text-sm text-[#8fa3ad]/95 animate-pulse-neon">Loading...</div>
         </div>
       </div>
     );
@@ -130,12 +133,13 @@ export default function Home() {
 
   if (!currentUser) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#0e1619' }}>
-        <div className="glass p-8 w-full max-w-md bg-[#0e1619]">
-          <h1 className="text-3xl font-bold gradient-text mb-6 text-center">⚡ BIENVENUE SWEET HOME</h1>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#0d1518' }}>
+        <div className="glass p-8 w-full max-w-md bg-[#0d1518]">
+          <img src="/logo.png" alt="Mbala&Itsaka" className="h-32 w-auto mx-auto mb-3 object-contain" />
+          <h1 className="text-3xl font-bold gradient-text mb-6 text-center">Mbala&amp;Itsaka</h1>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="text-xs text-white/40 mb-1 block">Email</label>
+              <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Email</label>
               <input
                 type="email"
                 value={loginUsername}
@@ -144,7 +148,7 @@ export default function Home() {
               />
             </div>
             <div>
-              <label className="text-xs text-white/40 mb-1 block">Password</label>
+              <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -156,7 +160,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8fa3ad]/95 hover:text-[#e6f1f5] transition-colors cursor-pointer"
                 >
                   {showPassword ? "🙈" : "👁️"}
                 </button>
@@ -167,7 +171,7 @@ export default function Home() {
             )}
             <button
               type="submit"
-              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer"
+              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-neon-purple to-neon-cyan text-[#e6f1f5] font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer"
             >
               Login
             </button>
@@ -178,18 +182,20 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex" style={{ background: '#0e1619' }}>
+    <div className="min-h-screen flex" style={{ background: '#0d1518' }}>
       <Sidebar currentPage={page} onNavigate={setPage} currentUser={currentUser} onLogout={handleLogout} />
       <main className="flex-1 ml-64 p-6 overflow-auto min-h-screen">
         {dataLoading && (
-          <div className="fixed top-4 right-4 z-50 glass px-4 py-2 text-xs text-white/60">
+          <div className="fixed top-4 right-4 z-50 glass px-4 py-2 text-xs text-[#e6f1f5]/80">
             Loading data...
           </div>
         )}
         {page === "dashboard" && <Dashboard products={products} orders={orders} onNavigate={setPage} />}
-        {page === "inventory" && <Inventory products={products} setProducts={handleSetProducts} currentUser={currentUser} />}
+        {page === "inventory" && <Inventory products={products} setProducts={handleSetProducts} currentUser={currentUser} onNavigate={setPage} />}
         {page === "sales" && <Sales orders={orders} setOrders={handleSetOrders} products={products} setProducts={handleSetProducts} currentUser={currentUser} />}
         {page === "report" && <Report orders={orders} products={products} currentUser={currentUser} />}
+        {page === "categories" && <Categories onNavigate={setPage} />}
+        {page === "stock" && <Stock products={products} setProducts={handleSetProducts} onNavigate={setPage} />}
       </main>
     </div>
   );

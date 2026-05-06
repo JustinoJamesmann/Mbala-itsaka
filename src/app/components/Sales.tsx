@@ -94,7 +94,7 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
           <div class="logo">
             <img src="/logo.png" alt="Logo" />
           </div>
-          <h1>BIENVENUE SWEET HOME</h1>
+          <h1>Mbala&amp;Itsaka</h1>
           <div class="info">
             <div><strong>Receipt #${order.id}</strong></div>
             <div>Date: ${order.date}</div>
@@ -163,11 +163,11 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold gradient-text">Sales</h1>
-          <p className="text-white/40 text-sm mt-1">Track and manage your orders</p>
+          <p className="text-[#8fa3ad]/95 text-sm mt-1">Track and manage your orders</p>
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-white font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer neon-glow-pink"
+          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-[#e6f1f5] font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer neon-glow-pink"
         >
           + New Order
         </button>
@@ -182,7 +182,7 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
             className={`px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
               statusFilter === status
                 ? "bg-neon-purple/20 text-neon-purple border border-neon-purple/30"
-                : "bg-white/5 text-white/40 border border-white/5 hover:bg-white/10"
+                : "bg-[#d14b4b]/8 text-[#8fa3ad]/95 border border-[#1f2a30] hover:bg-[#d14b4b]/10"
             }`}
           >
             {status === "all" ? "All" : status.charAt(0).toUpperCase() + status.slice(1)} ({count})
@@ -194,17 +194,17 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
       <div className="grid grid-cols-3 gap-4">
         <div className="glass p-4 text-center">
           <div className="text-2xl font-bold text-neon-cyan">{filtered.length}</div>
-          <div className="text-xs text-white/40">Orders</div>
+          <div className="text-xs text-[#8fa3ad]/95">Orders</div>
         </div>
         <div className="glass p-4 text-center">
           <div className="text-2xl font-bold text-neon-green">Ar {totalRevenue.toFixed(2)}</div>
-          <div className="text-xs text-white/40">Revenue</div>
+          <div className="text-xs text-[#8fa3ad]/95">Revenue</div>
         </div>
         <div className="glass p-4 text-center">
           <div className="text-2xl font-bold text-neon-purple">
             Ar {filtered.length > 0 ? (totalRevenue / filtered.filter(o => o.status !== "cancelled").length).toFixed(2) : "0.00"}
           </div>
-          <div className="text-xs text-white/40">Avg Order</div>
+          <div className="text-xs text-[#8fa3ad]/95">Avg Order</div>
         </div>
       </div>
 
@@ -221,7 +221,7 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-white/30 text-xs border-b border-white/5">
+              <tr className="text-[#8fa3ad]/80 text-xs border-b border-[#1f2a30]">
                 <th className="text-left py-3 px-4">Order ID</th>
                 <th className="text-left py-3 px-4">Customer</th>
                 <th className="text-left py-3 px-4">Items</th>
@@ -234,11 +234,11 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
             </thead>
             <tbody>
               {filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((order) => (
-                <tr key={order.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <tr key={order.id} className="border-b border-[#1f2a30] hover:bg-[#d14b4b]/8 transition-colors">
                   <td className="py-3 px-4 text-neon-cyan font-mono text-xs">{order.id}</td>
-                  <td className="py-3 px-4 text-white/70">{order.customer}</td>
-                  <td className="py-3 px-4 text-white/50">{order.items.length} items</td>
-                  <td className="py-3 px-4 text-right text-white/50">Ar {order.subtotal.toFixed(2)}</td>
+                  <td className="py-3 px-4 text-[#e6f1f5]/85">{order.customer}</td>
+                  <td className="py-3 px-4 text-[#8fa3ad]">{order.items.length} items</td>
+                  <td className="py-3 px-4 text-right text-[#8fa3ad]">Ar {order.subtotal.toFixed(2)}</td>
                   <td className="py-3 px-4 text-right text-neon-green font-medium">Ar {order.total.toFixed(2)}</td>
                   <td className="py-3 px-4 text-center">
                     <select
@@ -251,13 +251,13 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
                       ))}
                     </select>
                   </td>
-                  <td className="py-3 px-4 text-white/40 text-xs">{order.date}</td>
+                  <td className="py-3 px-4 text-[#8fa3ad]/95 text-xs">{order.date}</td>
                   <td className="py-3 px-4 text-center">
                     <div className="flex items-center justify-center gap-2">
-                      <button onClick={() => setViewOrder(order)} className="text-white/40 hover:text-neon-cyan transition-colors cursor-pointer text-xs">👁️</button>
-                      <button onClick={() => printReceipt(order)} className="text-white/40 hover:text-neon-green transition-colors cursor-pointer text-xs">🖨️</button>
+                      <button onClick={() => setViewOrder(order)} className="text-[#8fa3ad]/95 hover:text-neon-cyan transition-colors cursor-pointer text-xs">👁️</button>
+                      <button onClick={() => printReceipt(order)} className="text-[#8fa3ad]/95 hover:text-neon-green transition-colors cursor-pointer text-xs">🖨️</button>
                       {currentUser.role === "admin" && (
-                        <button onClick={() => handleDeleteOrder(order.id)} className="text-white/40 hover:text-neon-pink transition-colors cursor-pointer text-xs">🗑️</button>
+                        <button onClick={() => handleDeleteOrder(order.id)} className="text-[#8fa3ad]/95 hover:text-neon-pink transition-colors cursor-pointer text-xs">🗑️</button>
                       )}
                     </div>
                   </td>
@@ -267,7 +267,7 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
           </table>
         </div>
         {filtered.length === 0 && (
-          <div className="text-center py-12 text-white/30">No orders found</div>
+          <div className="text-center py-12 text-[#8fa3ad]/80">No orders found</div>
         )}
       </div>
 
@@ -375,9 +375,9 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold gradient-text">New Order</h1>
-          <p className="text-white/40 text-sm mt-1">Create a sale and select products easily</p>
+          <p className="text-[#8fa3ad]/95 text-sm mt-1">Create a sale and select products easily</p>
         </div>
-        <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/60 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+        <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl bg-[#d14b4b]/8 border border-[#1f2a30] text-[#e6f1f5]/80 text-sm hover:bg-[#d14b4b]/10 transition-colors cursor-pointer">
           Back to Sales
         </button>
       </div>
@@ -385,23 +385,23 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
       <div className="glass p-8 neon-glow-pink bg-[#0a0a1a]">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-xs text-white/40 mb-1 block">Customer Name</label>
+            <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Customer Name</label>
             <input type="text" required value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Customer name" />
           </div>
 
           <div>
-            <label className="text-xs text-white/40 mb-1 block">Phone Number (Optional)</label>
+            <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Phone Number (Optional)</label>
             <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone number" />
           </div>
 
           <div>
-            <label className="text-xs text-white/40 mb-1 block">Address (Optional)</label>
+            <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Address (Optional)</label>
             <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Delivery address" />
           </div>
 
           {/* Add items */}
           <div>
-            <label className="text-xs text-white/40 mb-1 block">Add Items</label>
+            <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Add Items</label>
             <div className="space-y-3">
               <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-2">
                 <select
@@ -422,8 +422,8 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
                     onFocus={() => setShowProductDropdown(true)}
                   />
                   {showProductDropdown && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-[#1a1a2e] border border-white/10 rounded-xl overflow-hidden z-50 max-h-80 overflow-y-auto">
-                      <div className="px-4 py-2 text-xs text-white/30 border-b border-white/10">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-[#0d1518] border border-[#1f2a30] rounded-xl overflow-hidden z-50 max-h-80 overflow-y-auto">
+                      <div className="px-4 py-2 text-xs text-[#8fa3ad]/80 border-b border-[#1f2a30]">
                         Showing {filteredProducts.length} products {categoryFilter !== "all" ? `in ${categoryFilter}` : "from all categories"}
                       </div>
                       {filteredProducts.length > 0 ? filteredProducts.map(p => (
@@ -431,21 +431,21 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
                           key={p.id}
                           type="button"
                           onClick={() => { setSelectedProduct(p.id); setProductSearch(p.name); setShowProductDropdown(false); }}
-                          className="w-full px-4 py-3 text-left hover:bg-white/5 cursor-pointer border-b border-white/5 last:border-b-0"
+                          className="w-full px-4 py-3 text-left hover:bg-[#d14b4b]/8 cursor-pointer border-b border-[#1f2a30] last:border-b-0"
                         >
                           <div className="flex items-center justify-between gap-3">
                             <div className="min-w-0">
-                              <div className="text-sm text-white/80 font-medium truncate">{p.name}</div>
-                              <div className="text-xs text-white/35 truncate">{p.sku} · {p.category}</div>
+                              <div className="text-sm text-[#e6f1f5]/90 font-medium truncate">{p.name}</div>
+                              <div className="text-xs text-[#8fa3ad]/95 truncate">{p.sku} · {p.category}</div>
                             </div>
                             <div className="text-right shrink-0">
                               <div className="text-sm text-neon-green">Ar {p.price.toFixed(2)}</div>
-                              <div className="text-xs text-white/35">{p.quantity} stock</div>
+                              <div className="text-xs text-[#8fa3ad]/95">{p.quantity} stock</div>
                             </div>
                           </div>
                         </button>
                       )) : (
-                        <div className="px-4 py-6 text-center text-sm text-white/30">No product found</div>
+                        <div className="px-4 py-6 text-center text-sm text-[#8fa3ad]/80">No product found</div>
                       )}
                     </div>
                   )}
@@ -459,7 +459,7 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
                     type="button"
                     onClick={() => { setCategoryFilter(category); setProductSearch(""); setSelectedProduct(""); setShowProductDropdown(true); }}
                     className={`shrink-0 px-3 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
-                      categoryFilter === category ? "bg-neon-purple/30 text-neon-purple" : "bg-white/5 text-white/50 hover:bg-white/10"
+                      categoryFilter === category ? "bg-neon-purple/30 text-neon-purple" : "bg-[#d14b4b]/8 text-[#8fa3ad] hover:bg-[#d14b4b]/10"
                     }`}
                   >
                     {category === "all" ? "All" : category}
@@ -470,8 +470,8 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
               {selectedProductData && (
                 <div className="rounded-xl border border-neon-purple/20 bg-neon-purple/10 p-3 flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-sm text-white/80 font-medium">{selectedProductData.name}</div>
-                    <div className="text-xs text-white/40">{selectedProductData.sku} · {selectedProductData.category} · {selectedProductData.quantity} in stock</div>
+                    <div className="text-sm text-[#e6f1f5]/90 font-medium">{selectedProductData.name}</div>
+                    <div className="text-xs text-[#8fa3ad]/95">{selectedProductData.sku} · {selectedProductData.category} · {selectedProductData.quantity} in stock</div>
                   </div>
                   <div className="text-sm text-neon-green shrink-0">Ar {selectedProductData.price.toFixed(2)}</div>
                 </div>
@@ -490,22 +490,22 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
           {items.length > 0 && (
             <div className="space-y-2">
               {items.map(item => (
-                <div key={item.productId} className="flex items-center justify-between bg-white/5 rounded-xl p-3">
+                <div key={item.productId} className="flex items-center justify-between bg-[#d14b4b]/8 rounded-xl p-3">
                   <div>
-                    <div className="text-sm text-white/70">{item.productName}</div>
-                    <div className="text-xs text-white/30">{item.quantity} × Ar {item.price.toFixed(2)}</div>
+                    <div className="text-sm text-[#e6f1f5]/85">{item.productName}</div>
+                    <div className="text-xs text-[#8fa3ad]/80">{item.quantity} × Ar {item.price.toFixed(2)}</div>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-sm text-neon-green">Ar {item.total.toFixed(2)}</span>
-                    <button type="button" onClick={() => removeItem(item.productId)} className="text-white/30 hover:text-neon-pink transition-colors cursor-pointer">✕</button>
+                    <button type="button" onClick={() => removeItem(item.productId)} className="text-[#8fa3ad]/80 hover:text-neon-pink transition-colors cursor-pointer">✕</button>
                   </div>
                 </div>
               ))}
-              <div className="border-t border-white/5 pt-2 space-y-1">
-                <div className="flex justify-between text-sm text-white/50">
+              <div className="border-t border-[#1f2a30] pt-2 space-y-1">
+                <div className="flex justify-between text-sm text-[#8fa3ad]">
                   <span>Subtotal</span><span>Ar {subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-sm text-white/50 items-center gap-2">
+                <div className="flex justify-between text-sm text-[#8fa3ad] items-center gap-2">
                   <span>Delivery Cost</span>
                   <input
                     type="number"
@@ -517,7 +517,7 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
                     className="w-24 text-right"
                   />
                 </div>
-                <div className="flex justify-between text-sm text-white/50 items-center gap-2">
+                <div className="flex justify-between text-sm text-[#8fa3ad] items-center gap-2">
                   <span>Remise</span>
                   <input
                     type="number"
@@ -538,10 +538,10 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
           )}
 
           <div className="flex gap-3 pt-2">
-            <button type="submit" disabled={items.length === 0 || !customer} className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-white font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed">
+            <button type="submit" disabled={items.length === 0 || !customer} className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-[#e6f1f5] font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed">
               Create Order
             </button>
-            <button type="button" onClick={onClose} className="flex-1 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+            <button type="button" onClick={onClose} className="flex-1 py-2.5 rounded-xl bg-[#d14b4b]/8 border border-[#1f2a30] text-[#e6f1f5]/80 text-sm hover:bg-[#d14b4b]/10 transition-colors cursor-pointer">
               Cancel
             </button>
           </div>
@@ -562,47 +562,47 @@ function OrderDetail({ order, onClose, onPrint, onDelete, currentUser }: { order
 
         <div className="space-y-4">
           <div className="flex justify-between text-sm">
-            <span className="text-white/40">Customer</span>
-            <span className="text-white/70">{order.customer}</span>
+            <span className="text-[#8fa3ad]/95">Customer</span>
+            <span className="text-[#e6f1f5]/85">{order.customer}</span>
           </div>
           {order.phone && (
             <div className="flex justify-between text-sm">
-              <span className="text-white/40">Phone</span>
-              <span className="text-white/70">{order.phone}</span>
+              <span className="text-[#8fa3ad]/95">Phone</span>
+              <span className="text-[#e6f1f5]/85">{order.phone}</span>
             </div>
           )}
           {order.address && (
             <div className="flex justify-between text-sm">
-              <span className="text-white/40">Address</span>
-              <span className="text-white/70">{order.address}</span>
+              <span className="text-[#8fa3ad]/95">Address</span>
+              <span className="text-[#e6f1f5]/85">{order.address}</span>
             </div>
           )}
           <div className="flex justify-between text-sm">
-            <span className="text-white/40">Date</span>
-            <span className="text-white/70">{order.date}</span>
+            <span className="text-[#8fa3ad]/95">Date</span>
+            <span className="text-[#e6f1f5]/85">{order.date}</span>
           </div>
 
-          <div className="border-t border-white/5 pt-4">
-            <h3 className="text-sm text-white/40 mb-3">Items</h3>
+          <div className="border-t border-[#1f2a30] pt-4">
+            <h3 className="text-sm text-[#8fa3ad]/95 mb-3">Items</h3>
             {order.items.map((item, i) => (
-              <div key={i} className="flex justify-between py-2 border-b border-white/5">
+              <div key={i} className="flex justify-between py-2 border-b border-[#1f2a30]">
                 <div>
-                  <div className="text-sm text-white/70">{item.productName}</div>
-                  <div className="text-xs text-white/30">{item.quantity} × Ar {item.price.toFixed(2)}</div>
+                  <div className="text-sm text-[#e6f1f5]/85">{item.productName}</div>
+                  <div className="text-xs text-[#8fa3ad]/80">{item.quantity} × Ar {item.price.toFixed(2)}</div>
                 </div>
                 <span className="text-sm text-neon-green">Ar {item.total.toFixed(2)}</span>
               </div>
             ))}
           </div>
 
-          <div className="border-t border-white/5 pt-3 space-y-1">
-            <div className="flex justify-between text-sm text-white/50">
+          <div className="border-t border-[#1f2a30] pt-3 space-y-1">
+            <div className="flex justify-between text-sm text-[#8fa3ad]">
               <span>Subtotal</span><span>Ar {order.subtotal.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-sm text-white/50">
+            <div className="flex justify-between text-sm text-[#8fa3ad]">
               <span>Delivery Cost</span><span>Ar {(order.deliveryCost || 0).toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-sm text-white/50">
+            <div className="flex justify-between text-sm text-[#8fa3ad]">
               <span>Remise</span><span>- Ar {(order.remise || 0).toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-lg font-bold text-neon-green">
@@ -612,7 +612,7 @@ function OrderDetail({ order, onClose, onPrint, onDelete, currentUser }: { order
         </div>
 
         <div className="flex gap-3 mt-6">
-          <button onClick={onClose} className="flex-1 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+          <button onClick={onClose} className="flex-1 py-2.5 rounded-xl bg-[#d14b4b]/8 border border-[#1f2a30] text-[#e6f1f5]/80 text-sm hover:bg-[#d14b4b]/10 transition-colors cursor-pointer">
             Close
           </button>
           {currentUser.role === "admin" && (
@@ -620,7 +620,7 @@ function OrderDetail({ order, onClose, onPrint, onDelete, currentUser }: { order
               🗑️ Delete
             </button>
           )}
-          <button onClick={onPrint} className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-neon-green to-neon-cyan text-white font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer">
+          <button onClick={onPrint} className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-neon-green to-neon-cyan text-[#e6f1f5] font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer">
             🖨️ Print Receipt
           </button>
         </div>

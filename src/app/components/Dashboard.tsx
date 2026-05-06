@@ -166,10 +166,10 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
         display: false,
       },
       tooltip: {
-        backgroundColor: "rgba(18, 18, 18, 0.95)",
-        titleColor: "#E0E0E0",
-        bodyColor: "#E0E0E0",
-        borderColor: "rgba(255, 255, 255, 0.1)",
+        backgroundColor: "#ffffff",
+        titleColor: "#000000",
+        bodyColor: "#000000",
+        borderColor: "rgba(127, 32, 32, 0.25)",
         borderWidth: 1,
         padding: 12,
         displayColors: true,
@@ -192,15 +192,15 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
       {
         label: "Sales Trend",
         data: salesTrendData.data,
-        borderColor: "#7ebb57",
+        borderColor: "#7F2020",
         backgroundColor: (context: any) => {
           const { chart } = context;
           const { ctx, chartArea } = chart;
-          if (!chartArea) return "rgba(126, 187, 87, 0.18)";
+          if (!chartArea) return "rgba(127, 32, 32, 0.15)";
           const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradient.addColorStop(0, "rgba(126, 187, 87, 0.42)");
-          gradient.addColorStop(0.55, "rgba(126, 187, 87, 0.14)");
-          gradient.addColorStop(1, "rgba(107, 165, 87, 0)");
+          gradient.addColorStop(0, "rgba(127, 32, 32, 0.32)");
+          gradient.addColorStop(0.55, "rgba(127, 32, 32, 0.10)");
+          gradient.addColorStop(1, "rgba(127, 32, 32, 0)");
           return gradient;
         },
         borderWidth: 3,
@@ -208,10 +208,10 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
         borderCapStyle: "round" as const,
         borderJoinStyle: "round" as const,
         fill: true,
-        pointBackgroundColor: "#7ebb57",
+        pointBackgroundColor: "#7F2020",
         pointBorderColor: "#ffffff",
         pointBorderWidth: 2,
-        pointHoverBackgroundColor: "#7ebb57",
+        pointHoverBackgroundColor: "#7F2020",
         pointHoverBorderColor: "#ffffff",
         pointHoverBorderWidth: 3,
         pointRadius: 0,
@@ -229,10 +229,10 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
         display: false,
       },
       tooltip: {
-        backgroundColor: "rgba(26, 29, 31, 0.96)",
-        titleColor: "#ffffff",
-        bodyColor: "#7ebb57",
-        borderColor: "rgba(126, 187, 87, 0.35)",
+        backgroundColor: "#ffffff",
+        titleColor: "#000000",
+        bodyColor: "#7F2020",
+        borderColor: "rgba(127, 32, 32, 0.35)",
         borderWidth: 1,
         padding: 16,
         displayColors: false,
@@ -266,7 +266,7 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
           drawBorder: false,
         },
         ticks: {
-          color: "rgba(224, 224, 224, 0.45)",
+          color: "#e6f1f5",
           padding: 10,
           font: {
             size: 12,
@@ -276,11 +276,11 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
       },
       y: {
         grid: {
-          color: "rgba(255, 255, 255, 0.05)",
+          color: "rgba(0, 0, 0, 0.06)",
           drawBorder: false,
         },
         ticks: {
-          color: "rgba(224, 224, 224, 0.45)",
+          color: "#e6f1f5",
           padding: 10,
           font: {
             size: 12,
@@ -308,15 +308,15 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
     <div className="animate-fade-in-up space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white">welcome back</h1>
+          <h1 className="text-xl font-bold text-[#e6f1f5]">welcome back</h1>
           <div>
-          <p className="mt-1"><span className="text-2xl font-bold" style={{ color: '#6ba557' }}>Bienvenue sweet home</span></p>
-          <p className="text-white/40 text-xs mt-1">here&apos;s what&apos;s happening with your business today .</p>
+          <p className="mt-1"><span className="text-2xl font-bold" style={{ color: '#DC2626' }}>Mbala&amp;Itsaka</span></p>
+          <p className="text-[#8fa3ad]/95 text-xs mt-1">here&apos;s what&apos;s happening with your business today .</p>
           </div>
         </div>
         <button
             onClick={() => setShowCalendar(true)}
-            className="text-xs text-white/20 hover:text-neon-purple transition-colors cursor-pointer"
+            className="text-xs text-[#8fa3ad]/65 hover:text-neon-purple transition-colors cursor-pointer"
           >
             {selectedDate.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
           </button>
@@ -326,16 +326,16 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
         {kpis.map((kpi) => (
           <div key={kpi.label} className={`glass p-5 min-w-0 ${kpi.color} transition-all duration-300 hover:scale-105`}>
-            <div className="text-sm font-medium text-white/60 mb-1">{kpi.label}</div>
+            <div className="text-sm font-medium text-[#e6f1f5]/80 mb-1">{kpi.label}</div>
             <div className={`text-2xl font-bold ${kpi.accent} whitespace-nowrap`}>{kpi.value}</div>
           </div>
         ))}
       </div>
 
       {/* Sales Trend Chart */}
-      <div className="glass p-6" style={{ background: "#1a1d1f" }}>
+      <div className="p-6 rounded-2xl" style={{ background: "#162126", boxShadow: "0 6px 24px rgba(127,32,32,0.18), 0 2px 8px rgba(127,32,32,0.10)" }}>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white/80">Sales Trend</h2>
+          <h2 className="text-lg font-semibold text-[#e6f1f5]">Sales Trend</h2>
           <div className="flex gap-2">
             {(["daily", "weekly", "monthly", "yearly"] as const).map((period) => (
               <button
@@ -343,8 +343,8 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
                 onClick={() => setTimePeriod(period)}
                 className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                   timePeriod === period
-                    ? "bg-[#6ba557] text-white"
-                    : "bg-white/5 text-white/60 hover:bg-white/10"
+                    ? "bg-[#7F2020] text-white"
+                    : "bg-[#d14b4b]/8 text-[#8fa3ad] hover:bg-[#d14b4b]/12"
                 }`}
               >
                 {period.charAt(0).toUpperCase() + period.slice(1)}
@@ -359,36 +359,36 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Stock Status */}
-        <div className="glass p-6" style={{ background: '#121212' }}>
-          <h2 className="text-lg font-bold text-[#E0E0E0] mb-6">Stock Status</h2>
+        <div className="p-6 rounded-2xl" style={{ background: '#162126', boxShadow: '0 6px 24px rgba(127,32,32,0.18), 0 2px 8px rgba(127,32,32,0.10)' }}>
+          <h2 className="text-lg font-bold text-[#e6f1f5] mb-6">Stock Status</h2>
           <div className="flex items-center gap-8">
             <div className="relative w-48 h-48">
               <Doughnut data={stockChartData} options={stockChartOptions} />
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="text-4xl font-bold text-[#E0E0E0]">{stockTotalItems}</div>
-                <div className="text-sm text-[#E0E0E0]/70">Total Items</div>
+                <div className="text-4xl font-bold text-[#e6f1f5]">{stockTotalItems}</div>
+                <div className="text-sm text-[#8fa3ad]">Total Items</div>
               </div>
             </div>
             <div className="flex-1 space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-3 h-3 rounded-full bg-[#4CAF50] mt-1.5"></div>
                 <div>
-                  <div className="text-sm font-medium text-[#E0E0E0]">In Stock</div>
-                  <div className="text-xs text-[#E0E0E0]/70">{stockInStock} ({inStockPercent}%)</div>
+                  <div className="text-sm font-medium text-[#e6f1f5]">In Stock</div>
+                  <div className="text-xs text-[#8fa3ad]">{stockInStock} ({inStockPercent}%)</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-3 h-3 rounded-full bg-[#FFC107] mt-1.5"></div>
                 <div>
-                  <div className="text-sm font-medium text-[#E0E0E0]">Low Stock</div>
-                  <div className="text-xs text-[#E0E0E0]/70">{stockLowStock} ({lowStockPercent}%)</div>
+                  <div className="text-sm font-medium text-[#e6f1f5]">Low Stock</div>
+                  <div className="text-xs text-[#8fa3ad]">{stockLowStock} ({lowStockPercent}%)</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-3 h-3 rounded-full bg-[#F44336] mt-1.5"></div>
                 <div>
-                  <div className="text-sm font-medium text-[#E0E0E0]">Out of Stock</div>
-                  <div className="text-xs text-[#E0E0E0]/70">{stockOutOfStock} ({outOfStockPercent}%)</div>
+                  <div className="text-sm font-medium text-[#e6f1f5]">Out of Stock</div>
+                  <div className="text-xs text-[#8fa3ad]">{stockOutOfStock} ({outOfStockPercent}%)</div>
                 </div>
               </div>
             </div>
@@ -398,8 +398,8 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
         {/* Top Selling Products */}
         <div className="glass p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-white/80">Top Selling Products</h2>
-            <button onClick={() => onNavigate("inventory")} className="text-xs text-[#6ba557] hover:text-white transition-colors cursor-pointer">View All →</button>
+            <h2 className="text-lg font-semibold text-[#e6f1f5]/90">Top Selling Products</h2>
+            <button onClick={() => onNavigate("inventory")} className="text-xs text-[#6ba557] hover:text-[#e6f1f5] transition-colors cursor-pointer">View All →</button>
           </div>
           <div className="space-y-3">
             {(() => {
@@ -420,8 +420,8 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
                 return (
                   <div key={productId} className="flex items-center gap-4">
                     <div className="flex-1">
-                      <div className="text-sm text-white/70 font-medium">{product.name}</div>
-                      <div className="text-xs text-white/30">{product.category}</div>
+                      <div className="text-sm text-[#e6f1f5]/85 font-medium">{product.name}</div>
+                      <div className="text-xs text-[#8fa3ad]/80">{product.category}</div>
                     </div>
                     <div className="text-right">
                       <div className="text-lg font-bold text-[#6ba557]">{quantity} sold</div>
@@ -431,20 +431,20 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
               });
             })()}
             {orders.filter(o => o.status !== "cancelled").length === 0 && (
-              <div className="text-center text-white/30 py-8">No sales data yet</div>
+              <div className="text-center text-[#8fa3ad]/80 py-8">No sales data yet</div>
             )}
           </div>
         </div>
 
         {/* Order Status Breakdown */}
         <div className="glass p-6">
-          <h2 className="text-lg font-semibold text-white/80 mb-4">Order Status</h2>
+          <h2 className="text-lg font-semibold text-[#e6f1f5]/90 mb-4">Order Status</h2>
           <div className="space-y-3">
             {Object.entries(statusCounts).map(([status, count]) => (
               <div key={status} className="flex items-center justify-between">
                 <span className={`badge-${status} px-3 py-1 rounded-full text-xs capitalize`}>{status}</span>
                 <div className="flex items-center gap-2">
-                  <div className="w-24 h-2 rounded-full bg-white/5 overflow-hidden">
+                  <div className="w-24 h-2 rounded-full bg-[#d14b4b]/8 overflow-hidden">
                     <div
                       className="h-full rounded-full transition-all duration-500"
                       style={{
@@ -453,7 +453,7 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
                       }}
                     />
                   </div>
-                  <span className="text-sm text-white/60 w-6 text-right">{count}</span>
+                  <span className="text-sm text-[#e6f1f5]/80 w-6 text-right">{count}</span>
                 </div>
               </div>
             ))}
@@ -462,21 +462,21 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
 
         {/* Inventory Value */}
         <div className="glass p-6">
-          <h2 className="text-lg font-semibold text-white/80 mb-4">Top Products by Value</h2>
+          <h2 className="text-lg font-semibold text-[#e6f1f5]/90 mb-4">Top Products by Value</h2>
           <div className="space-y-3">
             {topProducts.map((p, i) => (
               <div key={p.id} className="flex items-center gap-3">
-                <span className="text-xs text-white/30 w-4">{i + 1}</span>
+                <span className="text-xs text-[#8fa3ad]/80 w-4">{i + 1}</span>
                 <div className="flex-1">
-                  <div className="text-sm text-white/70">{p.name}</div>
-                  <div className="text-xs text-white/30">{p.quantity} units × Ar {p.price}</div>
+                  <div className="text-sm text-[#e6f1f5]/85">{p.name}</div>
+                  <div className="text-xs text-[#8fa3ad]/80">{p.quantity} units × Ar {p.price}</div>
                 </div>
                 <span className="text-sm text-neon-green font-medium">Ar {(p.price * p.quantity).toFixed(2)}</span>
               </div>
             ))}
           </div>
-          <div className="mt-4 pt-3 border-t border-white/5 flex justify-between">
-            <span className="text-sm text-white/40">Total Inventory Value</span>
+          <div className="mt-4 pt-3 border-t border-[#1f2a30] flex justify-between">
+            <span className="text-sm text-[#8fa3ad]/95">Total Inventory Value</span>
             <span className="text-lg font-bold text-neon-green">Ar {totalValue.toFixed(2)}</span>
           </div>
         </div>
@@ -485,13 +485,13 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
       {/* Recent Orders */}
       <div className="glass p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white/80">Recent Orders</h2>
+          <h2 className="text-lg font-semibold text-[#e6f1f5]/90">Recent Orders</h2>
           <button onClick={() => onNavigate("sales")} className="text-xs text-neon-purple hover:text-neon-cyan transition-colors cursor-pointer">View All →</button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-white/30 text-xs border-b border-white/5">
+              <tr className="text-[#8fa3ad]/80 text-xs border-b border-[#1f2a30]">
                 <th className="text-left py-2 px-3">Order ID</th>
                 <th className="text-left py-2 px-3">Customer</th>
                 <th className="text-left py-2 px-3">Items</th>
@@ -502,13 +502,13 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
             </thead>
             <tbody>
               {recentOrders.map((order) => (
-                <tr key={order.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <tr key={order.id} className="border-b border-[#1f2a30] hover:bg-[#d14b4b]/8 transition-colors">
                   <td className="py-3 px-3 text-neon-cyan font-mono text-xs">{order.id}</td>
-                  <td className="py-3 px-3 text-white/70">{order.customer}</td>
-                  <td className="py-3 px-3 text-white/50">{order.items.length} items</td>
+                  <td className="py-3 px-3 text-[#e6f1f5]/85">{order.customer}</td>
+                  <td className="py-3 px-3 text-[#8fa3ad]">{order.items.length} items</td>
                   <td className="py-3 px-3 text-neon-green font-medium">Ar {order.total.toFixed(2)}</td>
                   <td className="py-3 px-3"><span className={`badge-${order.status} px-2 py-0.5 rounded-full text-xs capitalize`}>{order.status}</span></td>
-                  <td className="py-3 px-3 text-white/40 text-xs">{order.date}</td>
+                  <td className="py-3 px-3 text-[#8fa3ad]/95 text-xs">{order.date}</td>
                 </tr>
               ))}
             </tbody>
@@ -522,14 +522,14 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
           <h2 className="text-lg font-semibold text-neon-orange mb-3">⚠️ Low Stock Alert</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {products.filter(p => p.quantity > 0 && p.quantity <= 5).map(p => (
-              <div key={p.id} className="flex items-center justify-between bg-white/5 rounded-xl p-3">
+              <div key={p.id} className="flex items-center justify-between bg-[#d14b4b]/8 rounded-xl p-3">
                 <div>
-                  <div className="text-sm text-white/70">{p.name}</div>
-                  <div className="text-xs text-white/30">{p.sku}</div>
+                  <div className="text-sm text-[#e6f1f5]/85">{p.name}</div>
+                  <div className="text-xs text-[#8fa3ad]/80">{p.sku}</div>
                 </div>
                 <div className="text-right">
                   <div className="text-sm font-bold text-neon-orange">{p.quantity}</div>
-                  <div className="text-xs text-white/30">min: 5</div>
+                  <div className="text-xs text-[#8fa3ad]/80">min: 5</div>
                 </div>
               </div>
             ))}
@@ -540,13 +540,13 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
       {/* Calendar Modal */}
       {showCalendar && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50" onClick={() => setShowCalendar(false)}>
-          <div className="glass p-6 w-full max-w-md bg-[#0e1619]" onClick={(e) => e.stopPropagation()}>
+          <div className="glass p-6 w-full max-w-md bg-[#0d1518]" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-xl font-bold gradient-text mb-4">Select Date</h2>
             <Calendar
               selectedDate={selectedDate}
               onSelect={(date) => { setSelectedDate(date); setShowCalendar(false); }}
             />
-            <button onClick={() => setShowCalendar(false)} className="w-full mt-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+            <button onClick={() => setShowCalendar(false)} className="w-full mt-4 py-2.5 rounded-xl bg-[#d14b4b]/8 border border-[#1f2a30] text-[#e6f1f5]/80 text-sm hover:bg-[#d14b4b]/10 transition-colors cursor-pointer">
               Close
             </button>
           </div>
@@ -601,13 +601,13 @@ function Calendar({ selectedDate, onSelect }: { selectedDate: Date; onSelect: (d
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <button onClick={prevMonth} className="text-white/40 hover:text-white transition-colors cursor-pointer text-lg">◀</button>
-        <div className="text-lg font-semibold text-white/80">{monthNames[currentMonth]} {currentYear}</div>
-        <button onClick={nextMonth} className="text-white/40 hover:text-white transition-colors cursor-pointer text-lg">▶</button>
+        <button onClick={prevMonth} className="text-[#8fa3ad]/95 hover:text-[#e6f1f5] transition-colors cursor-pointer text-lg">◀</button>
+        <div className="text-lg font-semibold text-[#e6f1f5]/90">{monthNames[currentMonth]} {currentYear}</div>
+        <button onClick={nextMonth} className="text-[#8fa3ad]/95 hover:text-[#e6f1f5] transition-colors cursor-pointer text-lg">▶</button>
       </div>
       <div className="grid grid-cols-7 gap-1 text-center">
         {dayNames.map(day => (
-          <div key={day} className="text-xs text-white/30 py-2">{day}</div>
+          <div key={day} className="text-xs text-[#8fa3ad]/80 py-2">{day}</div>
         ))}
         {Array.from({ length: firstDayOfMonth }).map((_, i) => (
           <div key={`empty-${i}`} className="py-2"></div>
@@ -620,10 +620,10 @@ function Calendar({ selectedDate, onSelect }: { selectedDate: Date; onSelect: (d
               onClick={() => selectDate(day)}
               className={`py-2 rounded-lg text-sm cursor-pointer transition-colors ${
                 isSelected(day)
-                  ? "bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-bold"
+                  ? "bg-gradient-to-r from-neon-purple to-neon-cyan text-[#e6f1f5] font-bold"
                   : isToday(day)
-                  ? "bg-white/10 text-neon-cyan"
-                  : "text-white/60 hover:bg-white/5"
+                  ? "bg-[#d14b4b]/10 text-neon-cyan"
+                  : "text-[#e6f1f5]/80 hover:bg-[#d14b4b]/8"
               }`}
             >
               {day}

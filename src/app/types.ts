@@ -39,4 +39,4 @@ export interface User {
   role: "admin" | "worker";
 }
 
-export type Page = "dashboard" | "inventory" | "sales" | "report";
+export type Page = "dashboard" | "inventory" | "sales" | "report" | "categories" | "stock";
