@@ -3,8 +3,8 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { defaultCategories, defaultProducts } from "../../../store";
 
 const defaultAccounts = [
-  { email: "mbala.itsaka@gmail.com", username: "MbalaItsaka", password: "Mba!Itsa123", role: "admin" as const },
-  { email: "bshworker6@gmail.com", username: "BSHWorker", password: "BSH!@worker123", role: "worker" as const },
+  { email: "Ramanatenasoamariemichelle@gmail.com", username: "Michelle", password: "marisa20", role: "admin" as const },
+  { email: "mbala.itsaka@gmail.com", username: "MbalaItsaka", password: "Mba!Itsa123", role: "worker" as const },
 ];
 
 export async function POST() {
