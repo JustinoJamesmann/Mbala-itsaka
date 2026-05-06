@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0e1619;
+  --foreground: #ffffff;
+  --neon-purple: #1F7D53;
+  --neon-cyan: #255F38;
+  --neon-pink: #255F38;
+  --neon-green: #255F38;
+  --neon-orange: #255F38;
+  --neon-red: #ef4444;
+  --glass-bg: rgba(37, 95, 56, 0.1);
+  --glass-border: rgba(37, 95, 56, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-green: var(--neon-green);
+  --color-neon-orange: var(--neon-orange);
+  --color-neon-red: var(--neon-red);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.neon-glow-purple { box-shadow: 0 0 20px rgba(31, 125, 83, 0.4), 0 0 60px rgba(31, 125, 83, 0.2); }
+.neon-glow-cyan { box-shadow: 0 0 20px rgba(37, 95, 56, 0.4), 0 0 60px rgba(37, 95, 56, 0.2); }
+.neon-glow-pink { box-shadow: 0 0 20px rgba(37, 95, 56, 0.4), 0 0 60px rgba(37, 95, 56, 0.2); }
+.neon-glow-green { box-shadow: 0 0 20px rgba(37, 95, 56, 0.4), 0 0 60px rgba(37, 95, 56, 0.2); }
+.neon-glow-orange { box-shadow: 0 0 20px rgba(37, 95, 56, 0.4), 0 0 60px rgba(37, 95, 56, 0.2); }
+.neon-glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), 0 0 60px rgba(239, 68, 68, 0.1); }
+
+.gradient-text {
+  background: linear-gradient(135deg, #255F38, #1F7D53, #0e1619);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #0e1619, #1F7D53, #255F38, #0e1619);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-neon { animation: pulse-neon 2s ease-in-out infinite; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+::-webkit-scrollbar-thumb { background: rgba(37, 95, 56, 0.5); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(37, 95, 56, 0.8); }
+
+input::-webkit-scrollbar,
+textarea::-webkit-scrollbar,
+select::-webkit-scrollbar {
+  display: none;
+}
+
+input { -ms-overflow-style: none; }
+textarea { -ms-overflow-style: none; }
+select { -ms-overflow-style: none; }
+
+.sidebar-active {
+  background: linear-gradient(90deg, rgba(37, 95, 56, 0.3), transparent);
+  border-left: 3px solid #255F38;
+}
+
+.badge-pending { background: rgba(37, 95, 56, 0.2); color: #255F38; border: 1px solid rgba(37, 95, 56, 0.4); }
+.badge-confirmed { background: rgba(31, 125, 83, 0.2); color: #1F7D53; border: 1px solid rgba(31, 125, 83, 0.4); }
+.badge-shipped { background: rgba(37, 95, 56, 0.2); color: #255F38; border: 1px solid rgba(37, 95, 56, 0.4); }
+.badge-delivered { background: rgba(31, 125, 83, 0.3); color: #1F7D53; border: 1px solid rgba(31, 125, 83, 0.5); }
+.badge-cancelled { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+input, select, textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e0e0ff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  outline: none;
+}
+
+select option {
+  background: #1a1a2e;
+  color: #e0e0ff;
+}
+
