@@ -136,13 +136,19 @@ export default function Inventory({ products, setProducts, currentUser, onNaviga
 
       {/* Filters */}
       <div className="flex gap-4 flex-wrap">
-        <input
-          type="text"
-          placeholder="Search products or SKU..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 min-w-[200px]"
-        />
+        {/* Search */}
+        <div className="relative flex-1 min-w-[200px]">
+          <input
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="pr-12 py-4 text-base w-full"
+          />
+          <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8fa3ad]/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
         <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} className="w-40">
           {filterCategories.map(c => (
             <option key={c} value={c}>{c === "all" ? "All Categories" : c}</option>
@@ -185,9 +191,6 @@ export default function Inventory({ products, setProducts, currentUser, onNaviga
                     </td>
                     <td className="py-3 px-4 text-neon-cyan font-mono text-xs">{product.sku}</td>
                     <td className="py-3 px-4 text-[#8fa3ad]">{product.category}</td>
-                    {currentUser.role === "admin" && (
-                      <td className="py-3 px-4 text-right text-[#8fa3ad]">Ar {(product.buyingPrice || 0).toFixed(2)}</td>
-                    )}
                     <td className="py-3 px-4 text-right text-[#e6f1f5]/85">Ar {product.price.toFixed(2)}</td>
                     <td className="py-3 px-4 text-right">
                       <span className={isLow ? "text-neon-orange font-bold" : "text-[#e6f1f5]/85"}>
@@ -235,7 +238,6 @@ function ProductForm({ product, categories, onSave, onClose }: { product: Produc
     name: product?.name || "",
     sku: product?.sku || "",
     category: product?.category || (categories[0] || ""),
-    buyingPrice: product?.buyingPrice?.toString() || "",
     price: product?.price?.toString() || "",
     quantity: product?.quantity?.toString() || "",
     image: product?.image || "",
@@ -246,7 +248,6 @@ function ProductForm({ product, categories, onSave, onClose }: { product: Produc
     e.preventDefault();
     onSave({
       ...form,
-      buyingPrice: parseFloat(form.buyingPrice) || 0,
       price: parseFloat(form.price) || 0,
       quantity: parseInt(form.quantity) || 0,
       id: product?.id,
@@ -299,10 +300,6 @@ function ProductForm({ product, categories, onSave, onClose }: { product: Produc
               </div>
               <input type="file" accept="image/*" onChange={handleImageImport} className="w-full" />
             </div>
-          </div>
-          <div className="text-center">
-            <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Buying Price (Ar)</label>
-            <input type="number" step="0.01" required value={form.buyingPrice} onChange={(e) => setForm({ ...form, buyingPrice: e.target.value })} placeholder="Buying price" className="w-full" />
           </div>
           <div className="text-center">
             <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Selling Price (Ar)</label>

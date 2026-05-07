@@ -49,14 +49,19 @@ export default function Stock({ products, setProducts, onNavigate }: { products:
         <div className="space-y-4">
           <div className="relative">
             <label className="text-xs text-[#8fa3ad]/95 mb-1 block">Search Product</label>
-            <input
-              type="text"
-              placeholder="Search product name or SKU..."
-              value={productSearch}
-              onChange={(e) => { setProductSearch(e.target.value); setShowDropdown(true); }}
-              onFocus={() => setShowDropdown(true)}
-              className="w-full"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search"
+                value={productSearch}
+                onChange={(e) => { setProductSearch(e.target.value); setShowDropdown(true); }}
+                onFocus={() => setShowDropdown(true)}
+                className="pr-12 py-4 text-base"
+              />
+              <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8fa3ad]/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
             {showDropdown && filteredProducts.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-[#0d1518] border border-[#1f2a30] rounded-xl overflow-hidden z-50 max-h-48 overflow-y-auto">
                 {filteredProducts.map(p => (

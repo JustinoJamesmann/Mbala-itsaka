@@ -224,12 +224,18 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
       </div>
 
       {/* Search */}
-      <input
-        type="text"
-        placeholder="Search by order ID or customer..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="pr-12 py-4 text-base"
+        />
+        <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8fa3ad]/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
 
       {/* Orders Table */}
       <div className="glass overflow-hidden">
@@ -303,7 +309,7 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
   const [address, setAddress] = useState("");
   const [items, setItems] = useState<OrderItem[]>([]);
   const [selectedProduct, setSelectedProduct] = useState("");
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(0);
   const [productSearch, setProductSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [showProductDropdown, setShowProductDropdown] = useState(false);
@@ -431,10 +437,11 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
                 <div className="relative" ref={dropdownRef}>
                   <input
                     type="text"
-                    placeholder="Search product name, SKU, or category..."
+                    placeholder="🔍 Search"
                     value={productSearch}
                     onChange={(e) => { setProductSearch(e.target.value); setSelectedProduct(""); setShowProductDropdown(true); }}
                     onFocus={() => setShowProductDropdown(true)}
+                    className="w-full py-4 text-base"
                   />
                   {showProductDropdown && (
                     <div className="absolute top-full left-0 right-0 mt-2 bg-[#0d1518] border border-[#1f2a30] rounded-xl overflow-hidden z-50 max-h-80 overflow-y-auto">
@@ -493,7 +500,7 @@ function CreateOrderForm({ products, onSave, onClose }: { products: Product[]; o
               )}
 
               <div className="flex gap-2">
-                <input type="number" min={1} max={selectedProductData?.quantity || undefined} value={qty || ""} onChange={(e) => setQty(parseInt(e.target.value) || 1)} placeholder="Qty" className="w-24" />
+                <input type="number" min={0} max={selectedProductData?.quantity || undefined} value={qty || ""} onChange={(e) => setQty(parseInt(e.target.value) || 0)} placeholder="Qty" className="w-24" />
                 <button type="button" onClick={addItem} disabled={!selectedProduct} className="flex-1 px-4 py-2 rounded-xl bg-neon-purple/20 text-neon-purple text-sm hover:bg-neon-purple/30 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed">
                   Add Selected Item
                 </button>

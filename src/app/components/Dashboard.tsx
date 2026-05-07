@@ -135,8 +135,6 @@ export default function Dashboard({ products, orders, onNavigate }: { products: 
   const outOfStockPercent = stockTotalItems > 0 ? ((stockOutOfStock / stockTotalItems) * 100).toFixed(1) : 0;
 
   const kpis = [
-    { label: "Wealth", value: formatAriary(totalValue), color: "", accent: "text-neon-orange" },
-    { label: "Benefits", value: formatAriary(totalBenefits), color: "", accent: "text-neon-purple" },
     { label: "Revenue", value: formatAriary(totalRevenue), color: "", accent: "text-neon-green" },
     { label: "Order", value: totalOrders.toString(), color: "", accent: "text-neon-cyan" },
     { label: "Total Items", value: stockTotalItems.toString(), color: "", accent: "text-neon-cyan" },

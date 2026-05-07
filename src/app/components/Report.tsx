@@ -50,24 +50,20 @@ export default function Report({ orders, products, currentUser }: { orders: Orde
   const reportRows = Object.values(filteredOrders.reduce((acc, order) => {
     order.items.forEach(item => {
       const product = products.find(p => p.id === item.productId);
-      const buyingPrice = product?.buyingPrice || 0;
       const existing = acc[item.productId] || {
         productName: item.productName,
         quantity: 0,
-        benefits: 0,
         revenue: 0,
         stockLeft: product?.quantity || 0,
       };
       existing.quantity += item.quantity;
       existing.revenue += item.total;
-      existing.benefits += (item.price - buyingPrice) * item.quantity;
       existing.stockLeft = product?.quantity || 0;
       acc[item.productId] = existing;
     });
     return acc;
-  }, {} as Record<string, { productName: string; quantity: number; benefits: number; revenue: number; stockLeft: number }>));
+  }, {} as Record<string, { productName: string; quantity: number; revenue: number; stockLeft: number }>));
   const totalQuantity = reportRows.reduce((sum, row) => sum + row.quantity, 0);
-  const totalBenefits = reportRows.reduce((sum, row) => sum + row.benefits, 0);
   const totalRevenue = reportRows.reduce((sum, row) => sum + row.revenue, 0);
 
   return (
@@ -109,7 +105,6 @@ export default function Report({ orders, products, currentUser }: { orders: Orde
                 <tr className="text-[#8fa3ad]/80 text-xs border-b border-[#1f2a30]">
                   <th className="text-left py-3 px-4">Product Name</th>
                   <th className="text-right py-3 px-4 number">Quantity</th>
-                  <th className="text-right py-3 px-4 number">Benefits</th>
                   <th className="text-right py-3 px-4 number">Revenue</th>
                   <th className="text-right py-3 px-4 number">Stock Left</th>
                 </tr>
@@ -119,7 +114,6 @@ export default function Report({ orders, products, currentUser }: { orders: Orde
                   <tr key={row.productName} className="border-b border-[#1f2a30] hover:bg-[#d14b4b]/8 transition-colors">
                     <td className="py-3 px-4 text-[#e6f1f5]/85">{row.productName}</td>
                     <td className="py-3 px-4 text-right text-[#e6f1f5]/85 number">{row.quantity}</td>
-                    <td className="py-3 px-4 text-right text-neon-purple font-medium number">Ar {row.benefits.toFixed(2)}</td>
                     <td className="py-3 px-4 text-right text-neon-green font-medium number">Ar {row.revenue.toFixed(2)}</td>
                     <td className="py-3 px-4 text-right text-[#e6f1f5]/85 number">{row.stockLeft}</td>
                   </tr>
@@ -129,7 +123,6 @@ export default function Report({ orders, products, currentUser }: { orders: Orde
                 <tr>
                   <td className="py-3 px-4 text-[#e6f1f5]/90">Total</td>
                   <td className="py-3 px-4 text-right text-[#e6f1f5]/90 number">{totalQuantity}</td>
-                  <td className="py-3 px-4 text-right text-neon-purple number">Ar {totalBenefits.toFixed(2)}</td>
                   <td className="py-3 px-4 text-right text-neon-green number">Ar {totalRevenue.toFixed(2)}</td>
                   <td className="py-3 px-4 text-right text-[#e6f1f5]/90 number">-</td>
                 </tr>
