@@ -26,11 +26,26 @@ export default function Sales({ orders, setOrders, products, setProducts, curren
   };
 
   function handleStatusChange(orderId: string, newStatus: Order["status"]) {
+    const order = orders.find(o => o.id === orderId);
+    if (!order) return;
+
+    // If changing to cancelled, restore stock
+    if (newStatus === "cancelled" && order.status !== "cancelled") {
+      const updatedProducts = [...products];
+      order.items.forEach(item => {
+        const idx = updatedProducts.findIndex(p => p.id === item.productId);
+        if (idx >= 0) {
+          updatedProducts[idx] = { ...updatedProducts[idx], quantity: updatedProducts[idx].quantity + item.quantity };
+        }
+      });
+      setProducts(updatedProducts);
+    }
+
     setOrders(orders.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
   }
 
-  const availableStatuses = currentUser.role === "worker" 
-    ? ["pending", "confirmed"] 
+  const availableStatuses = currentUser.role === "worker"
+    ? ["pending", "confirmed", "cancelled"]
     : ["pending", "confirmed", "shipped", "delivered", "cancelled"];
 
   function handleDeleteOrder(orderId: string) {
